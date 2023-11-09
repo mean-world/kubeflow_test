@@ -7,4 +7,4 @@
 
 4.install kubeflow and kubeflow python SDK
 
-5.~aiting
+5.~waiting
