@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from sklearn import preprocessing
 
-#web crawler
+# #web crawler
 #'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'
 start_date = '2010-01-01'
 end_date = '2023-11-08'
@@ -149,5 +149,10 @@ class model(nn.Module):
         out = self.lr(out)
         out = torch.sigmoid(out)
         return out[:, -1, :]
-    
 
+lstm_model = model(4)
+import mlflow
+mlflow.set_tracking_uri("https://localhost:8090")
+mlflow.set_experiment("test ex")
+with mlflow.start_run(run_name="test run"):
+    mlflow.pytorch.save_model(lstm_model, "test2")
