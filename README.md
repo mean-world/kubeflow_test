@@ -1,10 +1,11 @@
 # kubeflow_test
-1.install docker set nvidia container runtime
 
-2.install and set kubeadm
+#1.install docker set nvidia container runtime
 
-3.create k8s cluster(kubeadm init)
+#2.install and set kubeadm
 
-4.install kubeflow and kubeflow python SDK
+#3.create k8s cluster(kubeadm init)
 
-5.~waiting
+#4.install kubeflow and kubeflow python SDK
+
+#5.~waiting
