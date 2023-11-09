@@ -71,6 +71,9 @@ net.ipv4.ip_forward                 = 1
 EOF
 
 sudo sysctl --system
+
+sudo swapoff –a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 
 ```
@@ -86,4 +89,11 @@ sudo apt-get update
 export VERSION = 1.23.0-00
 sudo apt-get install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
 sudo apt-mark hold kubelet kubeadm kubectl
+```
+## create k8s cluster(kubeadm init)
+```
+#in this example we use flannel network architecture
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket="unix:///var/run/cri-dockerd.sock"
+
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
 ```
