@@ -12,5 +12,5 @@ Use kubeflow to quickly create distributed training environment on kubernetes cl
 ## 1.install docker set nvidia container runtime
 ```
 #Delete conflicting or old version packages
-** for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done **
+**for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done**
 ```
