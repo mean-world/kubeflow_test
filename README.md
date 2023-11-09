@@ -71,7 +71,6 @@ net.ipv4.ip_forward                 = 1
 EOF
 
 sudo sysctl --system
-
 sudo swapoff –a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
