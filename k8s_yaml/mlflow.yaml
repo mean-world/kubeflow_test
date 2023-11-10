@@ -6,8 +6,7 @@ spec:
   containers:
   - name: mlflow
     image: wjayesh/mlflow-tracking-server
-    command: ["mlflow server"]
-#larribas/mlflow:1.9.1
+    # command: ["mlflow server"]
     ports:
     - containerPort: 5000
     volumeMounts:
