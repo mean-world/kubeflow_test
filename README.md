@@ -89,10 +89,16 @@ export VERSION = 1.23.0-00
 sudo apt-get install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-## create k8s cluster(kubeadm init)
+## 3.create k8s cluster(kubeadm init)
 ```
 #in this example we use flannel network architecture
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket="unix:///var/run/cri-dockerd.sock"
 
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
+```
+
+## 4.install kubeflow and kubeflow python SDK
+```
+kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone?ref=v1.5.0"
+pip install kubeflow-training==1.5.0
 ```
