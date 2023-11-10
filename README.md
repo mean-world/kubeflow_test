@@ -104,4 +104,4 @@ kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/stand
 pip install -r requirements.txt
 ```
 
-## 
+## create mlflow server on k8s cluster
