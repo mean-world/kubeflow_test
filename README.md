@@ -8,7 +8,7 @@ Use kubeflow to quickly create distributed training environment on kubernetes cl
 3.create k8s cluster(kubeadm init)
 4.install kubeflow and kubeflow python SDK
 5.create mlflow server on k8s cluster
-6.Modify and execute
+6.execute
 ```
 ## 1.install docker set nvidia container runtime
 ### docker install
@@ -113,4 +113,8 @@ kubectl create -f mlflow_pv.yaml
 kubectl create -f mlflow_pvc.yaml
 #create mlflow server
 kubectl create -f mlflow.yaml
+```
+## 6.execute
+```
+python main.py
 ```
