@@ -100,6 +100,9 @@ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Do
 
 ## 4.install kubeflow and kubeflow python SDK
 ```
+#create NVIDIA device plugin for Kubernetes
+kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.14.1/nvidia-device-plugin.yml
+
 kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone?ref=v1.5.0"
 pip install -r requirements.txt
 ```
