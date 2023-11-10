@@ -7,7 +7,8 @@ Use kubeflow to quickly create distributed training environment on kubernetes cl
 2.install and set kubeadm
 3.create k8s cluster(kubeadm init)
 4.install kubeflow and kubeflow python SDK
-5.~waiting
+5.create mlflow server on k8s cluster
+6.Modify and execute
 ```
 ## 1.install docker set nvidia container runtime
 ### docker install
@@ -102,3 +103,5 @@ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Do
 kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone?ref=v1.5.0"
 pip install -r requirements.txt
 ```
+
+## 
