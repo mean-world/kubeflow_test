@@ -211,12 +211,7 @@ def train_pytorch_model():
 from kubeflow.training import TrainingClient
 from kubeflow.training import constants
 
-# Start PyTorchJob Training.
 pytorchjob_name = "train-pytorch"
-
-# Since we set `job_kind = PyTorchJob` APIs are going to use PyTorchJob as a default Job kind.
 training_client = TrainingClient(job_kind=constants.PYTORCHJOB_KIND)
-
-# training_client.create_job(name=pytorchjob_name, train_func=train_pytorch_model, num_worker_replicas=3, packages_to_install = ["yfinance", "scikit-learn", "mlflow"],)
-
-training_client.delete_job(pytorchjob_name)
+training_client.create_job(name=pytorchjob_name, train_func=train_pytorch_model, num_worker_replicas=3, packages_to_install = ["yfinance", "scikit-learn", "mlflow"],)
+# training_client.delete_job(pytorchjob_name)
