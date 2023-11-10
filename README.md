@@ -100,5 +100,5 @@ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Do
 ## 4.install kubeflow and kubeflow python SDK
 ```
 kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/standalone?ref=v1.5.0"
-pip install kubeflow-training==1.5.0
+pip install -r requirements.txt
 ```
