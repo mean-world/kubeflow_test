@@ -104,4 +104,13 @@ kubectl apply -k "github.com/kubeflow/training-operator/manifests/overlays/stand
 pip install -r requirements.txt
 ```
 
-## create mlflow server on k8s cluster
+## 5.create mlflow server on k8s cluster
+```
+#create pv for mlflow server
+#In this example, the mounting path used is /tmp/data; you can change it to the desired path.
+kubectl create -f mlflow_pv.yaml
+#create pvc for mlflow server
+kubectl create -f mlflow_pvc.yaml
+#create mlflow server
+kubectl create -f mlflow.yaml
+```
