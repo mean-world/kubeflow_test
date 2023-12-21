@@ -86,7 +86,7 @@ sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packag
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
 
-export VERSION = 1.23.0-00
+export VERSION =1.23.0-00
 sudo apt-get install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
