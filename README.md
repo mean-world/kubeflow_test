@@ -95,6 +95,10 @@ sudo apt-mark hold kubelet kubeadm kubectl
 #in this example we use flannel network architecture
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket="unix:///var/run/cri-dockerd.sock"
 
+mkdir -p $HOME/.kube/config/
+sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config/
+sudo chown $(id -u):$(id -g) $HOME/.kube/config/admin.conf
+
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
 ```
 
