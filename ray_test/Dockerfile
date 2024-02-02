@@ -7,5 +7,5 @@ RUN chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
 #python client
 RUN pip3 install kubernetes
-RUN pip3 install ray
+RUN pip3 install "ray[default]"
 
