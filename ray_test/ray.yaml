@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ray-head
+  namespace: ray
+  labels:
+    ray-type: head
+spec:
+  containers:
+  - name: test
+    image: pear1798/ray-test:v1 
+    command: ["ray"]
+    args: ["start", "--block", "--head", "--dashboard-host=0.0.0.0", "--num-cpus=2", "--memory=2000000000"]
+    ports:
+    - containerPort: 6379
+    resources:
+      requests:
+        memory: "2G"
+        cpu: "2"
+      limits:
+        memory: "2G"
+        cpu: "2"
+  restartPolicy: Always
+
+  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ray-head-svc
+  namespace: ray
+spec:
+  selector:
+    ray-type: head
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray-worker
+  namespace: ray
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: worker
+  template:
+    metadata:
+      labels:
+        type: worker
+    spec:
+      initContainers:
+      - name: test-head-status
+        image: pear1798/ray-test:v1
+        command: ["sleep"]
+        args: ["30"]
+        #command: ["ray"]
+        #args: ["health-check", "--address ray-head-svc:6379"]
+      containers:
+      - name: ray-worker
+        image: pear1798/ray-test:v1
+        command: ["ray"]
+        args: ["start", "--address=ray-head-svc:6379", "--block", "--num-cpus=2", "--memory=2000000000"]
+        resources:
+          requests:
+            memory: "2G"
+            cpu: "2"
+          limits:
+            memory: "2G"
+            cpu: "2"
+      
