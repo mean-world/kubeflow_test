@@ -122,8 +122,9 @@ class kubernetes_control():
         v1.create_namespace(client.V1Namespace(metadata=client.V1ObjectMeta(name=self.namespace)))
 
 k8s_cmd = kubernetes_control("user1")
-#create ray head
+#create user namespace
 k8s_cmd.create_namespace()
+#create ray head
 k8s_cmd.create_pod()
 k8s_cmd.create_service_dashboard()
 k8s_cmd.create_service_head_register()
