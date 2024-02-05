@@ -1,7 +1,7 @@
 
 import datetime
 from kubernetes import client, config
-#get kubectl 
+#get role
 config.load_incluster_config()
 
 
