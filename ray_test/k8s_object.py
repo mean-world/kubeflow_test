@@ -7,8 +7,8 @@ config.load_incluster_config()
 
 #create ray heads
 
-class kubernetes_control(namespace="default"):
-    def __init__(self, namespace):
+class kubernetes_control():
+    def __init__(self, namespace="default"):
         self.namespace = namespace #user name
 
     #create ray worker
