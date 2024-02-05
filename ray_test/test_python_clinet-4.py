@@ -14,7 +14,7 @@ def create_role(namespace):
             ),
             client.V1PolicyRule(
                 api_groups=[""],
-                resources=["pod"],
+                resources=["pods"],
                 verbs=["get", "watch", "list", "create", "update", "delete"]
             ),
             client.V1PolicyRule(
