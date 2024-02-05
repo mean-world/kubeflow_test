@@ -1,14 +1,14 @@
 
 import datetime
 from kubernetes import client, config
-#get role
+
 config.load_incluster_config()
 
 
 #create ray heads
 
-class kubernetes_control():
-    def __init__(self, namespace="default"):
+class kubernetes_control(namespace="default"):
+    def __init__(self, namespace):
         self.namespace = namespace #user name
 
     #create ray worker
@@ -116,9 +116,15 @@ class kubernetes_control():
 
         api_instance.create_namespaced_service(namespace=self.namespace, body=service)
 
+    #create user name
+    def create_namespace(self):
+        namespace_body = client.V1Namespace(metadata=client.V1ObjectMeta(namespace=self.namespace))
+        v1 = client.CoreV1Api()
+        v1.create_namespace(body=namespace_body)
 
 k8s_cmd = kubernetes_control("user1")
 #create ray head
+k8s_cmd.create_namespace()
 k8s_cmd.create_pod()
 k8s_cmd.create_service_dashboard()
 k8s_cmd.create_service_head_register()
