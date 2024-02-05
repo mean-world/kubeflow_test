@@ -90,7 +90,7 @@ class kubernetes_control(namespace="default"):
 
         service.api_version = "v1"
         service.kind = "Service"
-        service.metadata = client.V1ObjectMeta(name="dashboard-svc")
+        service.metadata = client.V1ObjectMeta(name="ray-dashboard-svc")
 
         spec = client.V1ServiceSpec(type="NodePort")
         spec.selector = {"ray-type": "head"}
