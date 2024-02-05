@@ -118,9 +118,8 @@ class kubernetes_control():
 
     #create user name
     def create_namespace(self):
-        namespace_body = client.V1Namespace(metadata=client.V1ObjectMeta(namespace=self.namespace))
         v1 = client.CoreV1Api()
-        v1.create_namespace(body=namespace_body)
+        v1.create_namespace(client.V1Namespace(metadata=client.V1ObjectMeta(name=self.namespace)))
 
 k8s_cmd = kubernetes_control("user1")
 #create ray head
